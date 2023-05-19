@@ -25,5 +25,9 @@ exports.updateOne = async (slugData, data) => {
     new: true,
     runValidators: true,
   });
-  return cake
+  return cake;
+};
+
+exports.deleteOne = async (slugData) => {
+  return await Cake.findOneAndDelete({ slug: slugData });
 };
