@@ -5,3 +5,8 @@ exports.create = async (data, user) => {
 
   return await Cake.create(data);
 };
+
+exports.getCakes = async (data) => {
+
+  return await Cake.find(data);
+};
