@@ -8,7 +8,12 @@ exports.create = catchAsync(async (req, res, next) => {
 });
 
 exports.getCakes = catchAsync(async (req, res, next) => {
-
   const data = await cakeService.getCakes(req.body);
   res.status(200).json(data);
+});
+
+exports.getOne = catchAsync(async (req, res, next) => {
+  const data = await cakeService.getOne(req.params.slug);
+
+  res.status(200).json(data[0]);
 });

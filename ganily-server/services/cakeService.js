@@ -7,6 +7,9 @@ exports.create = async (data, user) => {
 };
 
 exports.getCakes = async (data) => {
-
   return await Cake.find(data);
+};
+
+exports.getOne = async (data) => {
+  return await Cake.find({ slug: data });
 };
