@@ -25,6 +25,9 @@ exports.updateOne = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteOne = catchAsync(async (req, res, next) => {
-  await cakeService.deleteOne(req.params.slug);
-  res.status(204).json('ok');
+  const result = await cakeService.deleteOne(req.params.slug);
+  if (result === null) {
+    return res.status(404).json('Not found');
+  }
+  res.status(204).json('Deleted');
 });

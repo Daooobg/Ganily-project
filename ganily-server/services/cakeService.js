@@ -1,5 +1,7 @@
 const Cake = require('../models/cakeModel');
 const slug = require('slug');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/AppError');
 
 exports.create = async (data, user) => {
   data.ownerId = user._id;
@@ -28,6 +30,4 @@ exports.updateOne = async (slugData, data) => {
   return cake;
 };
 
-exports.deleteOne = async (slugData) => {
-  return await Cake.findOneAndDelete({ slug: slugData });
-};
+exports.deleteOne = (slugData) => Cake.findOneAndDelete({ slug: slugData });
