@@ -2,6 +2,7 @@ const Cake = require('../models/cakeModel');
 const slug = require('slug');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/AppError');
+const APIFeatures = require('../utils/apiFeatures');
 
 exports.create = async (data, user) => {
   data.ownerId = user._id;
@@ -9,8 +10,17 @@ exports.create = async (data, user) => {
   return await Cake.create(data);
 };
 
-exports.getCakes = async (data) => {
-  return await Cake.find(data);
+// exports.getCakes = async (data) => {
+//   return await Cake.find(data);
+// };
+
+exports.getCakes = async (queryData) => {
+  const feature = new APIFeatures(Cake.find(), queryData)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
+    return await feature.query;
 };
 
 exports.getOne = async (data) => {

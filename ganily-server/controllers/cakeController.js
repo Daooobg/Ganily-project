@@ -9,7 +9,8 @@ exports.create = catchAsync(async (req, res, next) => {
 });
 
 exports.getCakes = catchAsync(async (req, res, next) => {
-  const data = await cakeService.getCakes(req.body);
+  //   const data = await cakeService.getCakes(req.body);
+  const data = await cakeService.getCakes(req.query);
   res.status(200).json(data);
 });
 
