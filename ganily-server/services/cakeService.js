@@ -24,7 +24,7 @@ exports.getCakes = async (queryData) => {
 };
 
 exports.getOne = async (data) => {
-  return await Cake.find({ slug: data });
+  return await Cake.findOne({ slug: data });
 };
 
 exports.updateOne = async (slugData, data) => {
