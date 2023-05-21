@@ -24,6 +24,10 @@ exports.getCakes = catchAsync(async (req, res, next) => {
 exports.getOne = catchAsync(async (req, res, next) => {
   const data = await cakeService.getOne(req.params.slug);
 
+  if (!data) {
+    return next(new AppError(`No data found for: ${req.params.slug}`, 404));
+  }
+
   res.status(200).json({
     status: 'success',
     data: data,
@@ -33,6 +37,10 @@ exports.getOne = catchAsync(async (req, res, next) => {
 exports.updateOne = catchAsync(async (req, res, next) => {
   const data = await cakeService.updateOne(req.params.slug, req.body);
 
+  if (!data) {
+    return next(new AppError(`No data found for: ${req.params.slug}`, 404));
+  }
+
   res.status(200).json({
     status: 'success',
     data: data,
@@ -40,9 +48,10 @@ exports.updateOne = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteOne = catchAsync(async (req, res, next) => {
-  const result = await cakeService.deleteOne(req.params.slug);
-  if (result === null) {
-    return res.status(404).json('Not found');
+  const data = await cakeService.deleteOne(req.params.slug);
+
+  if (!data) {
+    return next(new AppError(`No data found for: ${req.params.slug}`, 404));
   }
 
   res.status(204).json({
