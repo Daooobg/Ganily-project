@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 
 const userRouter = require('./routes/userRouter');
-const productsRouter = require('./routes/productsRouter')
+const productsRouter = require('./routes/productsRouter');
 const authMiddleware = require('./middlewares/authMiddleware');
-
+const ErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
@@ -18,6 +18,6 @@ app.use(authMiddleware.authentication);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productsRouter);
 
-
+app.use(ErrorHandler);
 
 module.exports = app;
