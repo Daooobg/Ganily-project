@@ -54,7 +54,18 @@ const cakeSchema = new mongoose.Schema({
   logoDescription: [
     {
       type: String,
-      enum: ['vegan', 'nuts', 'sugar-free'],
+      enum: [
+        'glutenFree',
+        'sugarFree',
+        'vegan',
+        'keto',
+        'paleo',
+        'dairyFree',
+        'nutFree',
+        'soyFree',
+        'diabetics',
+        'probiotics',
+      ],
     },
   ],
   images: [
@@ -73,12 +84,7 @@ const cakeSchema = new mongoose.Schema({
   },
   priceDiscount: {
     type: Number,
-    validate: {
-      validator: function (val) {
-        return val < this.price;
-      },
-      message: 'Discount price ({VALUE}) should be below regular price',
-    },
+    default: 0,
   },
   createdAt: {
     type: Date,
