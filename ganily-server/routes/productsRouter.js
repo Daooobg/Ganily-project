@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const cakeController = require('../controllers/cakeController');
 const candyController = require('../controllers/candyController');
+const dessertController = require('../controllers/dessertController')
 const authMiddleware = require('../middlewares/authMiddleware');
 
 router.route('/cakes').post(cakeController.create).get(cakeController.getCakes);
@@ -25,6 +26,19 @@ router
   .delete(
     authMiddleware.restrictTo('admin', 'owner'),
     candyController.deleteOne
+  );
+
+  router
+  .route('/desserts')
+  .post(dessertController.create)
+  .get(dessertController.getCandy);
+router
+  .route('/desserts/:slug')
+  .get(dessertController.getOne)
+  .patch(authMiddleware.restrictTo('admin', 'owner'), dessertController.updateOne)
+  .delete(
+    authMiddleware.restrictTo('admin', 'owner'),
+    dessertController.deleteOne
   );
 
 module.exports = router;
