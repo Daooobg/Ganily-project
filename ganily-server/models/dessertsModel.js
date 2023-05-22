@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const slug = require('slug');
 
+const startUrl = /^(https?:\/)?\/.*/i;
+
 const dessertSchema = new mongoose.Schema({
   name: {
     type: String,
