@@ -1,0 +1,42 @@
+header {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  font-family: Roboto, serif;
+}
+
+.navigation {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.navigation ul {
+    margin: 0;
+}
+
+.navigation__logo {
+  width: 10rem;
+  height: 5rem;
+}
+
+.navigation__container {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+}
+
+.navigation__links {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  color: rgb(205, 125, 141);
+  padding: 0.2rem;
+  border-radius: 10px;
+}
+
+.navigation__links:hover {
+    background-color: black;
+}
