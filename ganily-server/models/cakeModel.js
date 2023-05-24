@@ -11,6 +11,10 @@ const cakeSchema = new mongoose.Schema({
     minLength: [3, 'Name must be at least 3 characters'],
     unique: true,
   },
+  product: {
+    type:String,
+    default: 'cakes'
+  },
   types: [
     {
       type: String,
