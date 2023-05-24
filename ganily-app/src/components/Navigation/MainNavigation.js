@@ -10,10 +10,10 @@ function MainNavigation() {
         <GanilyLogo className={style.navigation__logo} />
         <ul className={style.navigation__container} role="list">
           <li >
-            <Link className={style.navigation__links}>Home</Link>
+            <Link to='/' className={style.navigation__links}>Home</Link>
           </li>
           <li><Link className={style.navigation__links}>About Us</Link></li>
-          <li><Link className={style.navigation__links}>Products </Link></li>
+          <li><Link to='products' className={style.navigation__links}>Products </Link></li>
           <li><Link className={style.navigation__links}>Contact Us</Link></li>
         </ul>
       </nav>
